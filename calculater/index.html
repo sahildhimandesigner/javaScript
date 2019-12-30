@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+
+<div class="calculate-container">
+    <h4>Add Value and get your result as you wish</h4>
+    <br />
+    <input class="input-box" onkeypress="inputValidation()" type="text" size="25" id="firstValue" maxlength="150" />
+    <span id="error" class="error-message"></span>
+    <br />
+    <input class="input-box" onkeypress="inputValidation()" type="text" size="25" id="secondValue" maxlength="150" />
+    <span id="seconderror" class="error-message"></span>
+    <br />
+    <span id="showResult"></span>    
+    <br /><br />
+    <button onclick="addValue()">+ ADD</button>
+    <button onclick="subtractValue()">- SUBTRACT</button>
+    <button onclick="dividetValue()">/ DIVIDE</button>
+    <button onclick="multiplyValue()">* MULTIPLY</button>
+    <button onclick="percentageValue()">% PERCENTAGE</button>
+    <button onclick="bmsValue()">BMS (Body Mass Index)</button>
+    <button onclick="clearValue()">CLEAR</button>
+    <br /><br />
+
+    
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

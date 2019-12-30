@@ -1,0 +1,40 @@
+h4 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin: 0;
+    text-align: center;
+}
+button,
+button:hover,
+button:focus,
+button:visited,
+button:active {
+    background: #F2F5FA;
+    border-radius: 2px;
+    padding: 15px 25px;
+    text-align: center;
+    color: #2D2E34;
+    margin: 5px 0;
+    outline: 0;
+    cursor: pointer;
+}
+input[type="text"],
+input[type="text"]:focus,
+input[type="text"]:active,
+input[type="text"]:visited {
+    border: 1px solid #BEC9D6;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+    outline: 0;
+}
+.calculate-container {
+    border: 1px solid #BEC9D6;
+    max-width: 300px;
+    width: 100%;
+    padding: 15px;
+}
+.error-message {
+    color: #FF0000;
+}
