@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.inputbox {
+    display: flex;
+    margin: 10px;
+    flex-flow: column;
+}
+.inputbox input {
+    padding: 10px;
+    margin: 10px 0 0 0;
+}
+button {
+    background: #CCCCCC;
+    padding: 10px;
+    color: #000000;
+    font-size: 14px;
+    margin: 0 10px 10px 10px;
+}
+.contact-form {
+    margin: 20px auto;
+    float: none;
+    max-width: 350px;
+    width: 100%;
+    border: #CCCCCC solid 1px;
+}

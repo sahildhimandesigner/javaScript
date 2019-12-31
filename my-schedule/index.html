@@ -2,34 +2,49 @@
 <html>
 <head>
 <title>Page Title</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+
 </head>
 <body>
-
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
-
+    <form id="contactForm" class="contact-form">
+        <div class="inputbox">
+            <label>First Name</label>
+            <input type="text" value="" name="name" id="firstName" />
+        </div>
+        <div class="inputbox">
+            <label>Last Name</label>
+            <input type="text" value="" name="lastName" id="lastName" />
+        </div>
+        <div class="inputbox">
+            <label>Email</label>
+            <input type="text" value="" name="email" id="email" />
+        </div>
+        <div class="inputbox">
+            <label>Phone</label>
+            <input type="text" value="" name="phone" id="phone" />
+        </div>
+        <div class="inputbox">
+            <label>Message</label>
+            <textarea rows="5" cols="150" name="message" id="message"></textarea>            
+        </div>
+        <button type="submit">Submit</button>
+    </form>
 </body>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<!-- <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script> -->
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<!-- <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script> -->
+
+
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
-
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyCnyiOzZSc3hMyyMxRFubDXb4H3rsXVvUk",
-    authDomain: "my-scheduled.firebaseapp.com",
-    databaseURL: "https://my-scheduled.firebaseio.com",
-    projectId: "my-scheduled",
-    storageBucket: "my-scheduled.appspot.com",
-    messagingSenderId: "714565078401",
-    appId: "1:714565078401:web:7a2d78ac74e896c7cb2c80",
-    measurementId: "G-M2C53C1QHS"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-</script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+<script src="script.js"></script>
 </html> 
