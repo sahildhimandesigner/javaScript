@@ -6,26 +6,31 @@
 
 </head>
 <body>
-    <form id="contactForm" class="contact-form">
+    <form id="contactForm" class="contact-form" method="POST">
+        <h1></h1>
         <div class="inputbox">
             <label>First Name</label>
-            <input type="text" value="" name="name" id="firstName" />
+            <input onkeypress="formValidation()" type="text" value="" name="name" id="firstName" />
+            <span id="firstNameError" class="error"></span>
         </div>
         <div class="inputbox">
             <label>Last Name</label>
-            <input type="text" value="" name="lastName" id="lastName" />
+            <input onkeypress="formValidation()" type="text" value="" name="lastName" id="userLastName" />
+            <span id="firstLastError" class="error"></span>            
         </div>
         <div class="inputbox">
             <label>Email</label>
-            <input type="text" value="" name="email" id="email" />
+            <input onkeypress="formValidation()" type="email" value="" name="email" id="userEmail" />
+            <span id="firstEmailError" class="error"></span>
         </div>
         <div class="inputbox">
             <label>Phone</label>
-            <input type="text" value="" name="phone" id="phone" />
+            <input onkeypress="contactNumber()" type="number" value="" name="phone" id="userPhone" />
+            <span id="phoneNumber" class="error"></span>
         </div>
         <div class="inputbox">
             <label>Message</label>
-            <textarea rows="5" cols="150" name="message" id="message"></textarea>            
+            <textarea rows="5" cols="150" name="message" id="userMessage"></textarea>            
         </div>
         <button type="submit">Submit</button>
     </form>

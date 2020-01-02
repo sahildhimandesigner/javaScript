@@ -24,3 +24,8 @@ button {
     width: 100%;
     border: #CCCCCC solid 1px;
 }
+.error {
+    font-size: 12px;
+    color: #FF0000;
+    padding: 2px 0;
+}
