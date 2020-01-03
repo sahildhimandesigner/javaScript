@@ -2,38 +2,89 @@
 <html>
 <head>
 <title>Page Title</title>
-<link rel="stylesheet" type="text/css" href="style.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+<!--===============================================================================================-->
 
 </head>
 <body>
-    <form id="contactForm" class="contact-form" method="POST">
-        <h1></h1>
-        <div class="inputbox">
-            <label>First Name</label>
-            <input onkeypress="formValidation()" type="text" value="" name="name" id="firstName" />
-            <span id="firstNameError" class="error"></span>
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form id="contactForm" class="contact-form" method="POST" class="login100-form validate-form">
+                <span class="login100-form-title p-b-26">
+                    Welcome
+                </span>
+                <span class="login100-form-title p-b-48">
+                    <i class="zmdi zmdi-font"></i>
+                </span>
+                <h1 class="sucess-message"></h1>
+                
+                <div class="inputbox wrap-input100 validate-input">                    
+                    <input onkeypress="formValidation()" type="text" value="" name="name" id="firstName" class="input100" />
+                    <span class="focus-input100" data-placeholder="First Name"></span>
+                    <span id="firstNameError" class="error"></span>
+                </div>
+                <div class="inputbox wrap-input100 validate-input">                        
+                    <input onkeypress="formValidation()" type="text" value="" name="lastName" id="userLastName" class="input100" />
+                    <span class="focus-input100" data-placeholder="Last Name"></span>
+                    <span id="firstLastError" class="error"></span>            
+                </div>
+                <div class="inputbox wrap-input100 validate-input">
+                    <input onkeypress="formValidation()" type="email" value="" name="email" id="userEmail" class="input100" />
+                    <span class="focus-input100" data-placeholder="email"></span>
+                    <span id="firstEmailError" class="error"></span>
+                </div>
+                <div class="inputbox wrap-input100 validate-input">
+                    <input onkeypress="formValidation()" type="password" value="" name="password" id="user_Password" class="input100" />
+                    <span class="focus-input100" data-placeholder="password"></span>
+                    <span id="password_Error" class="error"></span>
+                </div>
+                <div class="inputbox wrap-input100 validate-input">
+                    <input onkeypress="formValidation()" type="password" value="" name="confirm_password" id="user_Confirm_Password" class="input100" />
+                    <span class="focus-input100" data-placeholder="Confirm Password"></span>
+                    <span id="confirm_password_Error" class="error"></span>
+                </div>        
+                <div class="inputbox wrap-input100 validate-input">
+                    <input onkeypress="contactNumber()" type="number" value="" name="phone" id="userPhone" class="input100" />
+                    <span class="focus-input100" data-placeholder="Phone"></span>
+                    <span id="phoneNumber" class="error"></span>
+                </div>
+                <div class="inputbox wrap-input100 validate-input">
+                    <textarea rows="5" cols="150" name="message" id="userMessage"></textarea>            
+                    <span class="focus-input100" data-placeholder="Message"></span>
+                </div>
+                <div class="container-login100-form-btn">
+					<div class="wrap-login100-form-btn">                
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="login100-form-btn" type="submit">Submit</button>
+                    </div>
+                </div>                        
+            </form>
         </div>
-        <div class="inputbox">
-            <label>Last Name</label>
-            <input onkeypress="formValidation()" type="text" value="" name="lastName" id="userLastName" />
-            <span id="firstLastError" class="error"></span>            
-        </div>
-        <div class="inputbox">
-            <label>Email</label>
-            <input onkeypress="formValidation()" type="email" value="" name="email" id="userEmail" />
-            <span id="firstEmailError" class="error"></span>
-        </div>
-        <div class="inputbox">
-            <label>Phone</label>
-            <input onkeypress="contactNumber()" type="number" value="" name="phone" id="userPhone" />
-            <span id="phoneNumber" class="error"></span>
-        </div>
-        <div class="inputbox">
-            <label>Message</label>
-            <textarea rows="5" cols="150" name="message" id="userMessage"></textarea>            
-        </div>
-        <button type="submit">Submit</button>
-    </form>
+    </div>
+</div>
 </body>
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->

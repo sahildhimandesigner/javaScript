@@ -29,3 +29,10 @@ button {
     color: #FF0000;
     padding: 2px 0;
 }
+.sucess-message {
+    font-size: 18px;
+    margin: -43px 0 60px 0;
+    text-align: center;
+    background: #21d4fd;
+    color: #FFF;
+}

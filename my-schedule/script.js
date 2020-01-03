@@ -32,7 +32,9 @@
     var last_Name = getInputVal("userLastName");
     var user_email = getInputVal("userEmail");
     var user_phone = getInputVal("userPhone");
-    var user_message = getInputVal("userMessage");   
+    var user_message = getInputVal("userMessage");
+    var user_password = getInputVal("user_Password");
+    var user_confirm_password = getInputVal("user_Confirm_Password");   
     
     // //save the message    
     if(user_name === "") {
@@ -55,7 +57,16 @@
     }
     if (user_phone === "") {
       document.getElementById("phoneNumber").innerHTML = "Enter the user phone";
-    }    
+    }
+    if (user_password === "") {
+      document.getElementById("password_Error").innerHTML = "Enter the password";
+    }
+    if (user_confirm_password === "") {
+      document.getElementById("confirm_password_Error").innerHTML = "Confirm your password";
+    }
+    else if(user_password != user_confirm_password) {
+      document.getElementById("confirm_password_Error").innerHTML = "password not match";
+    }
     if(isNaN(user_phone)){
       document.getElementById("phoneNumber").innerHTML = "Enter the numeric value";
     }
@@ -66,38 +77,52 @@
       document.getElementById("phoneNumber").innerHTML = "";
     }    
     else {
-      saveMessage(user_name, last_Name, user_email, user_phone, user_message);  
+      saveMessage(user_name, last_Name, user_email, user_phone, user_message, user_password, user_confirm_password);  
       document.querySelector("h1").innerHTML = "user added succesfully";
+      setTimeout(function(){
+        document.querySelector("h1").innerHTML = "";
+      }, 3000)      
     }    
   }
 
   //created the function to validation if there user enter the value then clear the validation message
 
-function formValidation(user_name, last_Name, user_email){  
-    var user_name = getInputVal("firstName");
-    var last_Name = getInputVal("userLastName");
-    var user_email = getInputVal("userEmail");    
+  function formValidation(user_name, last_Name, user_email, user_password, user_confirm_password){  
+      var user_name = getInputVal("firstName");
+      var last_Name = getInputVal("userLastName");
+      var user_email = getInputVal("userEmail");    
+      var user_password = getInputVal("user_Password");
+      var user_confirm_password = getInputVal("user_Confirm_Password");  
 
-  if(user_name) {
-    document.getElementById("firstNameError").innerHTML = "";    
-   }
-   if(last_Name) {
-    document.getElementById("firstLastError").innerHTML = "";    
-   }
-   if(user_email) {
-    document.getElementById("firstEmailError").innerHTML = "";    
-   }
-}
-
-function contactNumber(user_phone){
-  var user_phone = getInputVal("userPhone");
-  if(user_phone.length !== 10){
-    document.getElementById("phoneNumber").innerHTML = "enter the valid number";     
-  } 
-  else {
-    document.getElementById("phoneNumber").innerHTML = "";
+    if(user_name) {
+      document.getElementById("firstNameError").innerHTML = "";    
+    }
+    if(last_Name) {
+      document.getElementById("firstLastError").innerHTML = "";    
+    }
+    if(user_email) {
+      document.getElementById("firstEmailError").innerHTML = "";    
+    }
+    if(user_password) {
+      document.getElementById("password_Error").innerHTML = "";    
+    }
+    if(user_confirm_password) {
+      document.getElementById("confirm_password_Error").innerHTML = "";    
+    }
+    else if(user_password != user_confirm_password) {
+      document.getElementById("confirm_password_Error").innerHTML = "";
+    }
   }
-}
+  //Created the function for number so that it will not create problem
+  function contactNumber(user_phone){
+    var user_phone = getInputVal("userPhone");
+    if(user_phone.length !== 10){
+      document.getElementById("phoneNumber").innerHTML = "enter the valid number";     
+    } 
+    else {
+      document.getElementById("phoneNumber").innerHTML = "";
+    }
+  }
   //function to get form value rather then repeating the document.get 
 
   function getInputVal(id){    
@@ -106,12 +131,14 @@ function contactNumber(user_phone){
 
   // save the contact info to firbase
 
-  function saveMessage(name, lastName, email, phone, message) {    
+  function saveMessage(name, lastName, email, phone, message, password, confirm_password) {    
     var newMessageRef = messageRef.push();
     newMessageRef.set({
         name: name,
         lastName: lastName,
         email: email,
+        password: password,
+        confirm_password: confirm_password,
         phone: phone,
         message: message
     });
