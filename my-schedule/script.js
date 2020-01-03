@@ -15,13 +15,14 @@
   firebase.analytics();
 
   // Refrence to message collection or We have initialize the firebase database
-  var messageRef = firebase.database().ref("message");
-
+  var messageRef = firebase.database().ref("message");  
+  
 
   //Listen for form submit
   document.getElementById("contactForm").addEventListener("submit", submitForm);
 
   //create the function to submit the form
+
 
   function submitForm(e) {
     e.preventDefault(); 
@@ -29,12 +30,13 @@
     // //get the value of all input    
 
     var user_name = getInputVal("firstName");
-    var last_Name = getInputVal("userLastName");
-    var user_email = getInputVal("userEmail");
+    var last_Name = getInputVal("userLastName");    
     var user_phone = getInputVal("userPhone");
+    var user_email = getInputVal("userEmail");
     var user_message = getInputVal("userMessage");
     var user_password = getInputVal("user_Password");
     var user_confirm_password = getInputVal("user_Confirm_Password");   
+
     
     // //save the message    
     if(user_name === "") {
@@ -131,15 +133,16 @@
 
   // save the contact info to firbase
 
-  function saveMessage(name, lastName, email, phone, message, password, confirm_password) {    
+  function saveMessage(name, lastName, email, phone, message, password, confirm_password) {            
     var newMessageRef = messageRef.push();
     newMessageRef.set({
         name: name,
         lastName: lastName,
         email: email,
-        password: password,
         confirm_password: confirm_password,
         phone: phone,
         message: message
     });
+    var verifyUser = firebase.auth().createUserWithEmailAndPassword(email, password);
+    console.log(verifyUser, "sdfdsfdsfdsfs")
   }

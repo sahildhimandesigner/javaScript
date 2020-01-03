@@ -235,6 +235,14 @@ iframe {
   padding: 0 5px;
 }
 
+.sucess-message {
+  font-size: 18px;
+  margin: -43px 0 60px 0;
+  text-align: center;
+  background: #21d4fd;
+  color: #FFF;
+}
+
 /*---------------------------------------------*/ 
 .focus-input100 {
   position: absolute;
