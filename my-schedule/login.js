@@ -24,23 +24,34 @@
     var loginUserEmail = getLoginFormVal("user_email");
     var loginUserPassword = getLoginFormVal("user_password");
 
-    console.log(loginUserEmail + loginUserEmail)
-    
-    firebase.auth()
-      .signInWithEmailAndPassword(loginUserEmail, loginUserPassword)
-        .then(function(sucess) {
-          console.log(sucess, 'sucess')
-        })
-    .catch(function(error) {
-      console.log(error, 'error')
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
+    if(loginUserEmail === ""){
+      document.getElementById("user_email_error").innerHTML = "Enter the input value"
+    }
+    else {
+      document.getElementById("user_email_error").innerHTML = ""
+    }
 
-      document.getElementById("user_email_error").innerHTML = errorMessage;
-      console.log(errorCode)
-      // ...
-    });
+    if(loginUserPassword === ""){
+      document.getElementById("user_pasw_error").innerHTML = "Enter the value"
+    }
+    else{
+
+    firebase.auth()
+    .signInWithEmailAndPassword(loginUserEmail, loginUserPassword)
+      .then(function(sucess) {
+        console.log(sucess, 'sucess')
+      })
+  .catch(function(error) {
+    console.log(error, 'error')
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+
+    document.getElementById("user_email_error").innerHTML = errorMessage;
+    console.log(errorCode)
+    // ...
+  });
+    }
   }
 
 
