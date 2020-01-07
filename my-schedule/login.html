@@ -26,12 +26,12 @@
                 <h1 class="sucess-message"></h1>
                 
                 <div class="inputbox wrap-input100 validate-input">                    
-                    <input type="text" value="" name="userEmail" id="user_email" class="input100" />
+                    <input onkeypress="loginFormValidation()" type="text" value="" name="userEmail" id="user_email" class="input100" />
                     <span class="focus-input100" data-placeholder="email"></span>
                     <span id="user_email_error" class="error"></span>
                 </div>
                 <div class="inputbox wrap-input100 validate-input">                        
-                    <input type="password" value="" name="userPassword" id="user_password" class="input100" />
+                    <input onkeypress="loginFormValidation()" type="password" value="" name="userPassword" id="user_password" class="input100" />
                     <span class="focus-input100" data-placeholder="Password"></span>
                     <span id="user_pasw_error" class="error"></span>            
                 </div>

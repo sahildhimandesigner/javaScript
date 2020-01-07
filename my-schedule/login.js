@@ -21,8 +21,8 @@
   function loginUser(e) {
     e.preventDefault();
 
-    var loginUserEmail = getLoginFormVal("user_email");
-    var loginUserPassword = getLoginFormVal("user_password");
+    var loginUserEmail = document.getElementById("user_email").value;
+    var loginUserPassword = document.getElementById("user_password").value;
 
     if(loginUserEmail === ""){
       document.getElementById("user_email_error").innerHTML = "Enter the input value"
@@ -54,6 +54,25 @@
     }
   }
 
+  function loginFormValidation() {
+    var loginUserEmail = getLoginFormVal("user_email");
+    var loginUserPassword = getLoginFormVal("user_password");
+
+    if(loginUserEmail === ""){
+      document.getElementById("user_email_error").innerHTML = "Enter the input value"
+    }
+    else {
+      document.getElementById("user_email_error").innerHTML = ""
+    }
+
+    if(loginUserPassword.length === ""){
+      document.getElementById("user_pasw_error").innerHTML = "Enter the value"
+    }
+    else{
+      document.getElementById("user_pasw_error").innerHTML = ""
+    }
+
+  }
 
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
