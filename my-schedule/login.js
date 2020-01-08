@@ -13,7 +13,7 @@
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 
-  
+  var userInfomation = "";
 
   document.getElementById("loginForm").addEventListener("submit", loginUser);
 
@@ -79,11 +79,14 @@
       // User is signed in.      
       var user = firebase.auth().currentUser;
       console.log(user)
-      if(user != null){        
-        console.log(emailId, "email id of user")        
-        window.location.href="welcome.html";              
-        var emailId = user.email;
-        // window.onload = document.getElementById("userInfo").innerHTML = "welcome user " + emailId;
+      alert("out ")
+      if(user != null){                    
+        alert("in ")
+        
+        var userInfomation = user.email;        
+
+        localStorage.setItem('userEmailKey', userInfomation);
+        window.location.href="welcome.html";
         
       }
       
@@ -96,13 +99,3 @@
     return document.getElementById(id).value;
   }
 
-  function logoutUser(){
-    firebase.auth().signOut().then(function() {
-      window.location.href="login.html";
-
-    console.log("user loggout noew")
-    }).catch(function(error) {
-      // An error happened.
-      console.log(error)
-    });
-  }
