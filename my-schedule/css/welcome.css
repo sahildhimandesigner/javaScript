@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+header {
+    padding: 20px 50px 25px 50px;
+    background: #323439;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+header h1 {
+    margin: 0;
+    padding: 0;
+    color: #FFF
+}
+.logout-btn {
+    color: #FFF
+}
+.top-user-info {
+    display: flex;
+    flex-flow: column;
+}
+.user-email-id {
+    color: #FFF;
+    font-size: 14px;
+    padding: 0 0 10px 0;
+}

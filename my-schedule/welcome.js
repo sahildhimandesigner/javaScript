@@ -15,10 +15,12 @@
 
   // created the welcome function to get the data from local storage
   function welcome() {    
-   var userData = localStorage.getItem('userEmailKey');
+   var userData = JSON.parse(localStorage.getItem('userEmailKey'));
+   var userEmail = userData.email;   
+   console.log(userData)
    //if user data is there then load it   
    if(userData){
-     document.getElementById("userInfo").innerHTML = "welcome user " + userData;        
+     document.getElementById("userInfo").innerHTML = userEmail; 
    }  
   } 
 
@@ -29,7 +31,7 @@
    function logoutUser(){
      firebase.auth().signOut().then(function() {
        window.location.href="login.html";
-       localStorage.removeItem('userEmailKey');
+        localStorage.removeItem('userEmailKey');
      }).catch(function(error) {
        console.log(error)
      });

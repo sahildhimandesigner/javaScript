@@ -43,7 +43,7 @@
       })
   .catch(function(error) {
     console.log(error, 'error')
-    // Handle Errors here.
+    
     var errorCode = error.code;
     var errorMessage = error.message;
 
@@ -78,16 +78,13 @@
     if (user) {
       // User is signed in.      
       var user = firebase.auth().currentUser;
-      console.log(user)
-      alert("out ")
       if(user != null){                    
-        alert("in ")
         
-        var userInfomation = user.email;        
+                        
 
-        localStorage.setItem('userEmailKey', userInfomation);
-        window.location.href="welcome.html";
-        
+        localStorage.setItem('userEmailKey', JSON.stringify(user));
+        console.log(userInfomation, 'userInfomation')
+        window.location.href="welcome.html";        
       }
       
     } else {      
