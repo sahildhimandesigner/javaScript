@@ -80,8 +80,6 @@
       var user = firebase.auth().currentUser;
       if(user != null){                    
         
-                        
-
         localStorage.setItem('userEmailKey', JSON.stringify(user));
         console.log(userInfomation, 'userInfomation')
         window.location.href="welcome.html";        

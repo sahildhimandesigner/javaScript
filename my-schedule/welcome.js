@@ -37,3 +37,24 @@
      });
    }
 
+
+   function getAllUserData() {
+    var database = firebase.database();
+    database.ref('message').once('value', function(snapshot){
+        if(snapshot.exists()){
+            var content = '';            
+            snapshot.forEach(function(data){
+                var val = data.val();
+                content +='<tr>';
+                content += '<td>' + val.name + '</td>';
+                content += '<td>' + val.email + '</td>';
+                content += '</tr>';                
+                document.getElementById("ex-table").innerHTML += content;             
+            });
+            
+            
+        }
+    });
+   }
+
+   var usDa = window.onload = getAllUserData();

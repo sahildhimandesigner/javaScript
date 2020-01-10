@@ -16,14 +16,7 @@
 
   // Refrence to message collection or We have initialize the firebase database
   var messageRef = firebase.database().ref("message");  
-  const abc = () => {
-    alert('push');
-    const a = messageRef.push();
-    a.set({
-      name: 'sahil'
-    });
-    alert(a.key);
-  }
+  
 
   //Listen for form submit
   document.getElementById("contactForm").addEventListener("submit", submitForm);
@@ -87,14 +80,23 @@
     }    
     else {
       saveMessage(user_name, last_Name, user_email, user_phone, user_message, user_password, user_confirm_password);  
+      
       document.querySelector("h1").innerHTML = "user added succesfully";
+      abc();
       setTimeout(function(){
         document.querySelector("h1").innerHTML = "";
       }, 3000)      
     }    
   }
 
-
+  const abc = () => {    
+    const a = messageRef.push().getKey();     
+   console.log(a)
+    
+    var allUserData = localStorage.getItem('allUserProfileData');
+    console.log(allUserData, "allUserData")
+   
+  }
   //created the function to validation if there user enter the value then clear the validation message
 
   function formValidation(user_name, last_Name, user_email, user_password, user_confirm_password){  
@@ -144,12 +146,12 @@
   function saveMessage(name, lastName, email, phone, message, password, confirm_password) {            
     var newMessageRef = messageRef.push()
     newMessageRef.set({
-        name: 'name',
-        lastName: 'lastName',
-        email: 'email',
-        confirm_password: 'confirm_password',
-        phone: 'phone',
-        message: 'message'
+        name: name,
+        lastName: lastName,
+        email: email,
+        confirm_password: confirm_password,
+        phone: phone,
+        message: message
     }).then((data) => {
       console.log('dta', data);
     });
@@ -159,17 +161,15 @@
 
   // var getUserList = firebase.database().ref("message").get/( + userId);
   // console.log(getUserList, "getUserList")
- const userId = '/-LxQYVjuLPCl8h5xURm1';
 
-  var mref = firebase.database().ref(`message/${userId}`);
-  
-  mref.once("value").then(function(snapshot) {
-    // var key = snapshot; // "ada"
-    // var childKey = snapshot.child("name/last").key; // "last"
-    console.log(snapshot.val(), "user value")
-     
-  });
-  console.log(mref, 'mref');
-  
 
   
+  // const userId = '/-LxQYVjuLPCl8h5xURm1';
+
+  // var mref = firebase.database().ref(`message/${userId}`);
+  
+  // mref.once("value").then(function(snapshot) {
+  //   console.log(snapshot.val(), "user value")     
+  // });
+  // console.log(mref, 'mref');
+   
