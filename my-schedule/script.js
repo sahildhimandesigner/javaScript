@@ -143,8 +143,12 @@
 
   // save the contact info to firbase
 
-  function saveMessage(name, lastName, email, phone, message, password, confirm_password) {            
-    var newMessageRef = messageRef.push()
+  function saveMessage(name, lastName, email, phone, message, password, confirm_password) {     
+    var verifyUser = firebase.auth().createUserWithEmailAndPassword(email, password);  
+    verifyUser.then(data => {
+      const { uid } = data.user;
+    var messageRef2 = firebase.database().ref(`message/${uid}`);         
+    var newMessageRef = messageRef2.push()
     newMessageRef.set({
         name: name,
         lastName: lastName,
@@ -155,8 +159,7 @@
     }).then((data) => {
       console.log('dta', data);
     });
-    var verifyUser = firebase.auth().createUserWithEmailAndPassword(email, password);  
-    console.log('verifyUser', verifyUser);  
+})
   }
 
   // var getUserList = firebase.database().ref("message").get/( + userId);
@@ -172,4 +175,6 @@
   //   console.log(snapshot.val(), "user value")     
   // });
   // console.log(mref, 'mref');
-   
+  
+  
+  

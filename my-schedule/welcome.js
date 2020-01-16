@@ -12,7 +12,7 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
-
+  var userData = {};
   // created the welcome function to get the data from local storage
   function welcome() {    
    var userData = JSON.parse(localStorage.getItem('userEmailKey'));
@@ -40,7 +40,10 @@
 
    function getAllUserData() {
     var database = firebase.database();
-    database.ref('message').once('value', function(snapshot){
+    var userData = JSON.parse(localStorage.getItem('userEmailKey'));
+    console.log('step 1',userData);
+      database.ref(`message/${userData.uid}`).once('value', function(snapshot){
+        console.log('step 2',snapshot.exists());
         if(snapshot.exists()){
             var content = '';            
             snapshot.forEach(function(data){
