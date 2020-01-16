@@ -28,3 +28,22 @@ header h1 {
     font-size: 14px;
     padding: 0 0 10px 0;
 }
+.user-table {
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+.user-table td{
+    font-size: 15px;
+    color: gray;
+    line-height: 1.4;
+    padding: 10px;
+}
+.user-table tr:nth-child(even) {
+    background-color: #f8f6ff;    
+}
+.user-table-view {
+    height: 650px;
+    overflow: auto;
+    width: 1000px;
+    margin: 20px auto;
+}

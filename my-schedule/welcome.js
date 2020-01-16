@@ -44,8 +44,14 @@
         if(snapshot.exists()){
             var content = '';            
             snapshot.forEach(function(data){
-                var val = data.val();
-                document.getElementById("ex-table").innerHTML +="<tr><td width='50%'>" + val.name + "</td><td width='50%'>" + val.email + "</td><td>" + val.lastName + "</td><td>"  + val.phone + "</td></tr>";             
+                var val = data.val();                
+                content +='<tr>';
+                content += '<td>' + val.name + '</td>';
+                content += '<td>' + val.email + '</td>';
+                content += '<td>' + val.phone + '</td>';
+                content += '<td>' + val.lastName + '</td>';                
+                content += '</tr>';                
+                document.getElementById("ex-table").innerHTML += content;             
             });
             
             
