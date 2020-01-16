@@ -40,28 +40,35 @@
 
    function getAllUserData() {
     var database = firebase.database();
-    var userData = JSON.parse(localStorage.getItem('userEmailKey'));
+    var userData = JSON.parse(localStorage.getItem('userEmailKey'));    
+    // loadingData();    
     console.log('step 1',userData);
       database.ref(`message/${userData.uid}`).once('value', function(snapshot){
         console.log('step 2',snapshot.exists());
         if(snapshot.exists()){
+            document.getElementById("data_loading").style.display = "none";
             var content = '';            
             snapshot.forEach(function(data){
                 var val = data.val();                
                 var userName = val.name;
                 var name = (userName) ? userName : 'Name not provided';
                 content +='<tr>';
-                content += '<td>' + name + '</td>';
-                content += '<td>' + val.email + '</td>';
-                content += '<td>' + val.phone + '</td>';
-                content += '<td>' + val.lastName + '</td>';                
+                content += '<td width="20%">' + name + '</td>';
+                content += '<td width="20%">' + val.email + '</td>';
+                content += '<td width="20%">' + val.phone + '</td>';
+                content += '<td width="20%">' + val.lastName + '</td>';
+                content += '<td width="20%">' + val.message + '</td>';                
                 content += '</tr>';                
                 document.getElementById("ex-table").innerHTML += content;             
             });
-            
-            
-        }
-    });
-   }
+          }
+        });
+      }
 
    var usDa = window.onload = getAllUserData();
+
+  //  function loadingData() {
+  //     setInterval(function(){
+  //       document.getElementById("data_loading").innerHTML = "Loading..."
+  //     },3000)      
+  //  }
