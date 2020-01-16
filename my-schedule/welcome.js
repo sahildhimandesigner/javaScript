@@ -45,8 +45,10 @@
             var content = '';            
             snapshot.forEach(function(data){
                 var val = data.val();                
+                var userName = val.name;
+                var name = (userName) ? userName : 'Name not provided';
                 content +='<tr>';
-                content += '<td>' + val.name + '</td>';
+                content += '<td>' + name + '</td>';
                 content += '<td>' + val.email + '</td>';
                 content += '<td>' + val.phone + '</td>';
                 content += '<td>' + val.lastName + '</td>';                
