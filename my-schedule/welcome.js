@@ -23,7 +23,7 @@
      document.getElementById("userInfo").innerHTML = userEmail; 
    }  
   } 
-
+  var val12 = {};
   // call the welcome function on load when user redirect on welcome page
   window.onload = welcome(); 
 
@@ -74,6 +74,7 @@
       var content = '';             
       snapshot.forEach(function(data){
           var val = data.val();   
+          val12 = data.val();
           var userDataKey = data.key; 
           
           if(flag == 'list') {
@@ -112,7 +113,7 @@
       content +='<td width="20%">'+ '<input type="email" name="email" value="'+ val.phone + '" size="20" />' +'</td>';
       content +='<td width="20%">'+ '<input type="phone" name="" value="'+ val.lastName + '" size="20" />' +'</td>';
       content +='<td width="20%">'+ '<textarea name="message"> '+ val.message +'</textarea>' +'</td>';
-      content += '<td width="20%">' + '<button onclick="updateUserTable(\''+userDataKey+  '\',\'' + getUserId + ' \')">Update</button>' +'</td>';
+      content += '<td width="20%">' + '<button onclick="updateUserTable(\''+userDataKey+  '\',\'' + getUserId+'\')">Update</button>' +'</td>';
       content +='</tr>'
       //we have to return the content becuse we have to use this in other function
       return content;
@@ -122,11 +123,13 @@
    var usDa = window.onload = getAllUserData('list');
 
    const updateUserTable = (id, getUserId) => {
+     console.log('getUserId', getUserId);
     var database = firebase.database();
       
     //get the input value on click button bassed on input attribute
      var upUserName = document.getElementsByName('name')[0].value;
      alert(upUserName)
+     console.log('as', `message/${getUserId}`, id);
      var uptb = database.ref(`message/${getUserId}`).child(id).update({name: upUserName})
      
      console.log(uptb, "uptbuptbuptbuptbuptbuptb")
