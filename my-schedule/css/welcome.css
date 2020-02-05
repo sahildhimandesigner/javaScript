@@ -29,10 +29,10 @@ header h1 {
     padding: 0 0 10px 0;
 }
 .user-table {
-    margin: 20px auto;
+    margin: 0 auto;
     border-collapse: collapse;
 }
-.user-table td{
+.user-table td td {
     font-size: 15px;
     color: gray;
     line-height: 1.4;
@@ -43,7 +43,7 @@ header h1 {
 }
 .user-table-view {
     height: 450px;
-    width: 1000px;
+    width: 1200px;
     margin: 20px auto;
     box-shadow: #c1c1c1 1px 1px 4px 
 }
