@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/welcome.css" />
+<link rel="stylesheet" type="text/css" href="css/add_info.css" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+<body>
+    <header>        
+        <h1>My Schedule</h1>
+        <div class="top-user-info">            
+            <span class="user-email-id" id="userInfo"></span>
+            <button class="logout-btn" onclick="logoutUser()">Loggout</button>
+        </div>
+    </header>
+
+    <div>
+        <form class="add-info">
+            <label>Name Of your Task</label>
+            <input type="text" name="" value="" id="taskName" />
+            <br />
+
+            <label>Select Date</label>
+            <input type="text" id="datepicker"></p>
+            <br />
+
+            <label>Add The Info</label>
+            <textarea name="addTheInfo" id="addInfo" rows="10" cols="80"></textarea>
+            <br />
+
+            <input type="submit" value="Save" />
+
+        </form>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    $( function() {
+      $( "#datepicker" ).datepicker();
+    } );
+    </script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<!-- <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script> -->
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<!-- <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script> -->
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+<script src="welcome.js"></script>
+
+</html> 

@@ -1,0 +1,16 @@
+.add-info input,
+.add-info input:focus,
+.add-info input:active,
+.add-info textarea {
+    border: #000 solid 1px;
+    padding: 10px;
+    margin: 0 0 40px 0;
+}
+.add-info label {
+    width: 100%;
+    display: block;
+}
+.add-info {
+    width: 400px;
+    margin: 100px auto 0 auto;
+}
