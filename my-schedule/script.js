@@ -1,19 +1,4 @@
 
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyAgJf3PEXIZmiQqWXv5gPuCpv2CBT-CGiE",
-    authDomain: "contactform-cab54.firebaseapp.com",
-    databaseURL: "https://contactform-cab54.firebaseio.com",
-    projectId: "contactform-cab54",
-    storageBucket: "contactform-cab54.appspot.com",
-    messagingSenderId: "864200746629",
-    appId: "1:864200746629:web:13829f38a486c2e0086bec",
-    measurementId: "G-P90P23VV0L"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-
   // Refrence to message collection or We have initialize the firebase database
   var messageRef = firebase.database().ref("message");  
   
@@ -80,9 +65,8 @@
     }    
     else {
       saveMessage(user_name, last_Name, user_email, user_phone, user_message, user_password, user_confirm_password);  
-      
-      document.querySelector("h1").innerHTML = "user added succesfully";
-      abc();
+            
+      document.querySelector("h1").innerHTML = "user added succesfully";      
       setTimeout(function(){
         document.querySelector("h1").innerHTML = "";
       }, 3000)      
@@ -91,12 +75,12 @@
 
   const abc = () => {    
     const a = messageRef.push().getKey();     
-   console.log(a)
+    console.log(a)
     
     var allUserData = localStorage.getItem('allUserProfileData');
-    console.log(allUserData, "allUserData")
-   
+    console.log(allUserData, "allUserData")   
   }
+
   //created the function to validation if there user enter the value then clear the validation message
 
   function formValidation(user_name, last_Name, user_email, user_password, user_confirm_password){  
@@ -125,6 +109,7 @@
       document.getElementById("confirm_password_Error").innerHTML = "";
     }
   }
+
   //Created the function for number so that it will not create problem
   function contactNumber(user_phone){
     var user_phone = getInputVal("userPhone");
@@ -159,8 +144,8 @@
     }).then((data) => {
       console.log('dta', data);
     });
-})
-  }
+  })
+}
 
   // var getUserList = firebase.database().ref("message").get/( + userId);
   // console.log(getUserList, "getUserList")

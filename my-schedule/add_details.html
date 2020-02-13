@@ -18,27 +18,31 @@
         </div>
     </header>
 
-    <div>
-        <form class="add-info">
+    <div>        
+        <form class="add-info" method="POST" id="to_do_details">
+            <h1 id="completedTask"></h1>
             <label>Name Of your Task</label>
-            <input type="text" name="" value="" id="taskName" />
+            <input type="text" name="task" value="" id="taskName" onkeypress="checkValdation()" />
+            <span id="task_error" class="error"></span>
             <br />
 
             <label>Select Date</label>
-            <input type="text" id="datepicker"></p>
+            <input type="text" id="datepicker" name="date" onkeypress="checkValdation()" />
+            <span id="dateError" class=""></span> 
+            <span id="date_error" class="error"></span>
             <br />
 
             <label>Add The Info</label>
-            <textarea name="addTheInfo" id="addInfo" rows="10" cols="80"></textarea>
+            <textarea name="addTheInfo" id="addInfo" rows="10" onkeypress="checkValdation()" cols="80"></textarea>
+            <span id="details_error" class="error"></span>
             <br />
 
             <input type="submit" value="Save" />
-
         </form>
     </div>
 </body>
-
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
     $( function() {
@@ -61,6 +65,7 @@
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
-<script src="welcome.js"></script>
+<script src="common.js"></script>
+<script src="add_details.js"></script>
 
 </html> 

@@ -1,18 +1,3 @@
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyAgJf3PEXIZmiQqWXv5gPuCpv2CBT-CGiE",
-    authDomain: "contactform-cab54.firebaseapp.com",
-    databaseURL: "https://contactform-cab54.firebaseio.com",
-    projectId: "contactform-cab54",
-    storageBucket: "contactform-cab54.appspot.com",
-    messagingSenderId: "864200746629",
-    appId: "1:864200746629:web:13829f38a486c2e0086bec",
-    measurementId: "G-P90P23VV0L"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-
   var userInfomation = "";
 
   document.getElementById("loginForm").addEventListener("submit", loginUser);
