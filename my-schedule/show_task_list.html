@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+<link rel="stylesheet" type="text/css" href="show_task.css" />
+<!--===============================================================================================-->
+
+</head>
+<body>
+    <header>        
+        <h1>My Schedule</h1>
+        <div class="top-user-info">            
+            <span class="user-email-id" id="userInfo"></span>
+            <a href="show_task_list.html">Show Task List</a>
+            <button class="logout-btn" onclick="logoutUser()">Loggout</button>
+        </div>
+    </header>
+
+
+    <table class="user-table" id="taskTable" width="100%" border="0" cellpadding="0" cellspacing="0">
+    </table>
+</body>
+
+
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+<script src="common.js"></script>
+<script src="show_task.js"></script>
+</html> 

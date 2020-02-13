@@ -1,34 +1,8 @@
   var userData = {};
-  // created the welcome function to get the data from local storage
-  function welcome() {    
-   var userData = JSON.parse(localStorage.getItem('userEmailKey'));
-   var userEmail = userData.email;      
-   //if user data is there then load it   
-   if(userData){
-     document.getElementById("userInfo").innerHTML = userEmail; 
-   }  
-  } 
   var val12 = {};
-  // call the welcome function on load when user redirect on welcome page
-  window.onload = welcome(); 
-
-// clear the localstorge when user logged out
-   function logoutUser(){
-     firebase.auth().signOut().then(function() {
-       window.location.href="login.html";
-        localStorage.removeItem('userEmailKey');
-     }).catch(function(error) {
-       console.log(error)
-     });
-   }
-
    // Created the function for updated the user table
-  //  const editDetails = (e) => {
-  //    alert(e.id, "edit the user details")
-  //  }
 
-   // I have created the function fo delete the user
-   
+      
    //pass the flag as parameter to show the data bassesd on this
    function getAllUserData(flag) {
     // Connected the firebase Database
@@ -50,7 +24,7 @@
    const loggedInUserDetails = (snapshot, flag, getUserId) => {
     if(snapshot.exists()){
       document.getElementById("data_loading").style.display = "none";
-      var content = '';             
+      var content = '';
       snapshot.forEach(function(data){
           var val = data.val();   
           val12 = data.val();
