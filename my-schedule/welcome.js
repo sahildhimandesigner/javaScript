@@ -28,15 +28,14 @@
       snapshot.forEach(function(data){
           var val = data.val();   
           val12 = data.val();
-          var userDataKey = data.key; 
-          
+          var userDataKey = data.key;          
           if(flag == 'list') {
             content = showtUserTableData(val,content)
           }
           else{
             content = eidtUserTableData(val, content, userDataKey, getUserId);
           }
-          document.getElementById("ex-table").innerHTML += content;             
+          document.getElementById("ex-table").innerHTML += content;
       });
      }
    }   
@@ -52,7 +51,7 @@
         content += '<td width="20%">' + val.phone + '</td>';
         content += '<td width="20%">' + val.lastName + '</td>';
         content += '<td width="20%">' + val.message + '</td>';
-        content += '<td width="20%">' + '<button onclick="getAllUserData(\'update\')">Edit</button> <a href="javascript:void()" onclick=\"deleteDetails()\">Delete</a>' + '</td>';                
+        content += '<td width="20%">' + '<button onclick="getAllUserData(\'update\')">Edit</button> <a href="javascript:void()" onclick=\"deleteDetails()\">Delete</a>' + '</td>'; 
         content += '</tr>';
         //we have to return the content becuse we have to use this in other function
       return content;
