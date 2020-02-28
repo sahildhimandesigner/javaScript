@@ -77,8 +77,8 @@
    const updateUserTable = (id, getUserId) => {
     var database = firebase.database();      
     //get the input value on click button bassed on input attribute
-     var upUserName = document.getElementsByName('name')[0].value;     
+     var upUserName = document.getElementsByName('name')[0].value;
      console.log('as', `message/${getUserId}`, id);
-     var uptb = database.ref(`message/${getUserId}`).child(id).update({name: upUserName})     
+     var uptb = database.ref(`message/${getUserId}`).child(id).update({name: upUserName})
      getAllUserData('list');
    }
