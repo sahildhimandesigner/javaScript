@@ -22,11 +22,6 @@ const getAllTask = (flag) => {
     });
 }
 
-
-const taskRemoved = () => {
-    alert("removed the task")
-}
-
 const cancelData = () => {
     getAllTask('list')
 }
@@ -41,7 +36,7 @@ const showUserTaskList = (tableContent, val, tableKey, id) => {
     tableContent += '<td>' + val.addTheInfo + '</td>'
     tableContent += '<td>' + val.task + '</td>'
     tableContent += '<td>' + val.date + '</td>'
-    tableContent += '<td>' + '<button onclick="taskRemoved()">Remove</button>'+'</td>'
+    tableContent += '<td>' + '<button onclick="taskRemoved(\''+tableKey+'\')">Remove</button>'+'</td>'
     tableContent += '<td>' + '<button onclick="getAllTask(\''+tableKey+'\')">Edit</button>'+ '</td>'
     tableContent += '<td>' + '<button onclick="">Done</button>'+ '</td>'
     tableContent += '</tr>'
@@ -70,5 +65,15 @@ const updateTaskList = (tableKey) => {
     console.log(upUserName, tableKey, 'upUserName')  
     database.ref(`/allTaskDetails`).child(tableKey).update({addTheInfo: upUserName, date: date, task: task})
     
+    getAllTask("list")
+}
+
+
+const taskRemoved = (tableKey) => {
+    console.log(tableKey, 'remove tableKey')
+
+    var database = firebase.database();
+
+    database.ref('allTaskDetails/').child(tableKey).remove();    
     getAllTask("list")
 }
