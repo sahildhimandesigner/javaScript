@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<div class="container">            
+    <form id="user-form">
+        <div class="row">
+            <div class="col-25">
+                <label>Enter Name</label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="userName" placeholder="Enter the name" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-75">
+                <label>I have bike</label>
+                <input type="checkbox" id="bike" value="" />
+            </div>        
+        </div>    
+        <div class="row">
+            <div class="col-75">
+                <label>Male</label>
+                <input type="radio" name="gender" value="male">
+            
+                <label>Female</label>            
+                <input type="radio" name="gender" value="female">
+            </div>        
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label>Select Car</label>
+            </div>
+            <div class="col-75">
+                <select id="selectCar">
+                    <option>Select</option>
+                    <option>Volvo</option>
+                    <option>BMW</option>
+                    <option>AUDI</option>
+                    <option>TATA</option>
+                </select>
+            </div>        
+        </div>
+        <br /><br />
+        <div class="row">
+            <input type="submit" value="Submit" />
+        </div>
+        <br /><br />
+    </form>
+
+    <form id="secondForm">
+        <div class="row">
+            <div class="col-25">
+               <label>User Name</label>     
+            </div>
+            <div class="col-75">
+                <input type="text" id="userName2" placeholder="Enter the name" />
+            </div>
+        </div>
+        
+        
+        <div class="row">
+            <div class="col-75">
+                <label>I have bike</label>            
+                <input type="checkbox" id="bike2" value="" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-75">
+                <label> Male</label>
+                <input type="radio" name="gender1" value="male" />
+                <label> Female</label>
+                <input type="radio" name="gender1" value="female" />
+            </div>
+        </div> 
+
+        <div class="row">
+            <div class="col-25">
+                <label>Selected Car</label>
+            </div>
+            <div class="col-75">
+                <select id="selectedCar">
+                    <option>Select</option>
+                    <option>Volvo</option>
+                    <option>BMW</option>
+                    <option>AUDI</option>
+                    <option>TATA</option>
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script src="script.js"></script>
+</html>
