@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" type="text/css" />
+    </head>
+    <body>
+        <button id="addInput" class="add-input-btn">Add Input</button>    
+        <div class="container form-container">
+            <label class="lable-name"></label> <br />
+            <div class="showInput"></div>
+        </div>
+
+        <div class="modal">
+            <div class="modal-container">
+                <span class="closeModal">close</span>
+                <h1>Select Input Type</h1>
+                <div class="col-100">
+                    <label>Lable Name</label>
+                    <input type="text" id="labelName" />
+                </div>      
+                <div class="col-100">
+                    <label>Select Input Type</label>
+                    <select id="selectInputType">
+                        <option>Select Type</option>
+                        <option>text</option>
+                        <option>email</option>
+                        <option>password</option>
+                    </select>
+                </div>
+                <div class="col-100">
+                    <label>Input ID</label>
+                    <input type="text" id="inputId" />
+                </div>
+                <div class="col-100">
+                    <label>Select Name Value</label>
+                    <input type="text" id="selectInputName" />
+                </div>
+                <br /><br />
+                <button class="add-input-btn btn-primary" id="add">Add</button>                
+            </div>
+        </div>
+
+        <div class="overlay"></div>
+    </body>
+    <script src="script.js"></script>
+</html>
