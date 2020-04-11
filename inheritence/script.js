@@ -82,6 +82,9 @@ function Sumsung(number){
 //THIS WAY WE DO THE PROTOTYPE INHERITANCHE
 Sumsung.prototype = Object.create(Mobile.prototype);
 
+//RESET THE CONSTRUCTOR //THIS IS GOOD PRACTICE TO RESET THE CONSTRUCTOR
+Sumsung.prototype.constructor = Sumsung;
+
 var s = new Sumsung(40);
 document.write(s.a + '<br />');
 document.write(s.b + '<br />');
