@@ -89,9 +89,15 @@ Sumsung.prototype = Object.create(Mobile.prototype);
 Sumsung.prototype.constructor = Sumsung;
 
 var s = new Sumsung(40);
-document.write(s.a + '<br />');
-document.write(s.b + '<br />');
-document.write(s.c + '<br />')
 
 //HERE WE ARE NOT DOING CLASS OR CONSTRUCTOR INHERITANCE
 //WE ARE DOING HERE PROTOTYPES INHERITANCE
+
+
+//we have created the new object to overwrite the value of 'c'.
+Sumsung.prototype.c = 50;
+
+document.write(s.a + '<br />');
+document.write(s.b + '<br />');
+document.write(m.c + '<br />')
+document.write(s.c + '<br />')
