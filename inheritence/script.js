@@ -62,6 +62,7 @@ function Mobile() {
 //when we give a new object with new keyword to JS engine.
 //Then JS engine create the object and define one property which point to class prototype object. 
 //This is also called a prototype chain.
+//Parent class can't access the child class methode and property
 var m = new Mobile();
 
 
