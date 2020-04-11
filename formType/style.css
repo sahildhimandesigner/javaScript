@@ -5,7 +5,7 @@ body {
 .modal {
     width: 100%;
     max-width: 500px;    
-    margin: 150px auto 0 auto;    
+    margin: 50px auto 0 auto;    
     padding: 20px;
     position: relative;
     z-index: 11;
@@ -34,7 +34,7 @@ body {
     box-sizing: border-box;
   }
   
-  input[type=text], select, textarea {
+  input[type=text], input[type=email], input[type=password], select, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -108,4 +108,8 @@ body {
   .btn-primary {
      float: left;
      margin: 10px 0;
+  }
+
+  .pull-left {
+    float: left !important;
   }
