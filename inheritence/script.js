@@ -79,7 +79,9 @@ function Sumsung(number){
     this.b = number;
 }
 
-//THIS WAY WE DO THE PROTOTYPE INHERITANCHE
+//THIS WAY WE DO THE PROTOTYPE INHERITANCHE.
+//Here sumsung prototype is linking with mobile prototype.
+//Thats why you are able to access the parent class prototype.
 Sumsung.prototype = Object.create(Mobile.prototype);
 
 //RESET THE CONSTRUCTOR //THIS IS GOOD PRACTICE TO RESET THE CONSTRUCTOR
