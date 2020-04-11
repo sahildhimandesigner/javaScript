@@ -45,14 +45,13 @@ document.write(money.showGmoney())
 //*************ProtoType Inheritence************
 //**********************************************
 
-
 //Whenever we create a constructor. It will create two object.
 //Function and prototype object.
 //So function have one property. which we call prototype.
 //We can access the Mobile function by prototype property.
 //Function have one prototype. which point to prototype object.
 //AND Prototype again have one proto which point null.
-
+//BY USING PROTOTYPE WE CAN SAVE THE MEMORY BECAUSE IT IS AVAILABLE FOR ALL OBJECTS.
 
 function Mobile() {
     this.a = 10;
@@ -64,7 +63,6 @@ function Mobile() {
 //This is also called a prototype chain.
 //Parent class can't access the child class methode and property
 var m = new Mobile();
-
 
 
 //HERE WE HAVE CREATED THE PROTOTYPE IN MOBILE CONSTRUCTOR.
@@ -95,6 +93,7 @@ var s = new Sumsung(40);
 
 
 //we have created the new object to overwrite the value of 'c'.
+//it will not overwrite but, if we replace 'sumsung' with 'mobile' then it will overwrite.
 Sumsung.prototype.c = 50;
 
 document.write(s.a + '<br />');
