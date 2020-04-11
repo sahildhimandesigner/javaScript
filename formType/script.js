@@ -28,9 +28,9 @@ function selectInputType() {
     document.querySelector('.showInput').innerHTML = `<input type='${inputType}' value='${inpuName}' name='${inpuName}' id='${inputId}' />`    
     document.querySelector('.form-container').style.display = 'block';
     document.querySelector(".add-input-btn").style.display = 'none';
-    closeModal()
     document.querySelector(".submit-btn").innerHTML = `<input class="sub-btn" type="submit" value="submit" />`
     document.querySelector(".sub-btn").addEventListener('click', submitForm);
+    closeModal();
 }
 
 closeModal();
@@ -39,6 +39,10 @@ closeModal();
 function submitForm() {
     inputValue = document.querySelector(`#${inputId}`).value;
     document.querySelector(".show_input_value").textContent = inputValue;
+
+    if(inputValue === "") {
+        alert('enter the value');
+    }
 }
 
 //CREATED THE FUNCTION FOR DECALARE THE VARRIABLE
