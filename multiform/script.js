@@ -25,31 +25,5 @@ function submitForm() {
     }
 }
 
-// function getP() {
-//     debugger;
-//     var nbP = document.getElementById("nombreP").value;
-//     var inputContainer = document.getElementById("inutContainer");
-
-//     for (i = 0; i < nbP; i++) {
-//         debugger;
-//         newForm = document.createElement("input");
-//         newForm.setAttribute("type", "text");
-//         newForm.setAttribute("id", "form"+i);
-//         inputContainer.appendChild(newForm);
-//         inputContainer.appendChild(document.createElement("br"));
-//         var a = document.getElementById("inutContainer");
-//         var p = a.getElementsByTagName("input")[i];
-//         var f = p.getAttribute("id");
-//         console.log(p, 'input');
-//         console.log(f,'get id')
-//     }
-// }
-
-// function add() {
-//     count = 1;
-// }
-
-// var d = inputContainer.querySelector("input");
-//            c = d.getAttribute("id", "form"+i);
 
 
