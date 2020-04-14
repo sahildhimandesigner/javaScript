@@ -5,7 +5,7 @@
     </head>
     <body>
         <h2>Click on Add Input Button</h2>
-        <button id="addInput" class="add-input-btn pull-left">Add Input</button>    
+        <button id="addInput" onclick="openModel()"class="add-input-btn pull-left">Add Input</button>    
         <div class="container form-container">
             <label class="lable-name"></label> <br />
             <div class="showInput"></div><br /><br />
@@ -36,10 +36,6 @@
                 <div class="col-100">
                     <label>Input ID</label>
                     <input type="text" id="inputId" />
-                </div>
-                <div class="col-100">
-                    <label>Select Name Value</label>
-                    <input type="text" id="selectInputName" />
                 </div>
                 <br /><br />
                 <button class="add-input-btn btn-primary" id="add">Add</button>                

@@ -64,11 +64,10 @@ function Mobile() {
 //Parent class can't access the child class methode and property
 var m = new Mobile();
 
+var sahil = new Object()
 
 //HERE WE HAVE CREATED THE PROTOTYPE IN MOBILE CONSTRUCTOR.
 Mobile.prototype.c = 30;
-
-document.write(m.c)
 
 //BUT WE ARE NOT ABLE TO ACCESS THE C VALUE IN SAMSUNG CONSTRUCTOR
 //FOR THAT WE DO THE PROTOTYPE INHERITANCE
@@ -100,3 +99,33 @@ document.write(s.a + '<br />');
 document.write(s.b + '<br />');
 document.write(m.c + '<br />')
 document.write(s.c + '<br />')
+
+
+var john = {
+    name: 'john',
+    yearOfBirth: '1990',
+    job: 'teacher'
+}
+
+
+var Person = function(name, yearOfBirth, job) {
+    this.name = name,
+    this.yearOfBirth = yearOfBirth,
+    this.job = job
+}
+
+Person.prototype.calculateAge = function() {
+    console.log(2020 - this.yearOfBirth)
+}
+
+
+
+var sahil = new Person('sahil', 1990, 'webdesigner');
+var vicky = new Person ('vicky', 1994, 'UI designer');
+var randeep = new Person ('Randeep Kaur', 1992, 'Teacher')
+
+Person.prototype.lastName = "Dhiman";
+
+console.log(sahil, vicky, randeep)
+
+
