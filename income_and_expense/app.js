@@ -16,6 +16,20 @@ var budegtController = (function(){
         this.value = value;
     }
 
+    //To store the mutliple expense and income value we use array
+    //Rahter than create multiple empty array for expense and income 
+    //We can create store that in object that is called data
+    var data = {
+        allItems: {
+            exp: [],
+            inc: []
+        },
+        totals: {
+            exp: 0,
+            inc: 0
+        }
+    }
+
 })();
 
 // UI CONTROLLER
