@@ -39,8 +39,15 @@ var budegtController = (function(){
         addItem: function(type, des, val){
             var newItem, ID;
 
-            //Create a new id 
-            ID = data.allItems[type][data.allItems[type].length -1].id + 1;
+            //Create a new id
+            //So if there is no idea that it should be zero. and zero -1 is -1
+            //so there is not -1 in array and this id is not existe
+            if(data.allItems[type].length > 0) {
+                ID = data.allItems[type][data.allItems[type].length -1].id + 1;
+            } 
+            else {
+                ID = 0;
+            }
 
             //Here we check that user selecting which iteam income or expense
             if(type = 'exp') {
@@ -58,6 +65,10 @@ var budegtController = (function(){
             //now we are going to return newItem so that other controller can use it.
             //Return the new element
             return newItem;
+        },
+
+        testing: function(){
+            console.log(data)
         }
     }
 })();
@@ -141,12 +152,13 @@ var controller = (function(budgetCtrl, UICtrl) {
 
     //For reusability we have created the function.
     var ctrlAddItem = function() {
+        var input, newItem,
 
         // 1. Get the filed input data
-        const input = UICtrl.getInput();
-        console.log(input);
+        input = UICtrl.getInput();
 
         // 2. Add the item to the budget controller
+        newItem = budegtController.addItem(input.type, input.description, input.value)
 
         // 3. Add the item to the UI 
 
