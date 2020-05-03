@@ -19,6 +19,8 @@ var budegtController = (function(){
     //To store the mutliple expense and income value we use array
     //Rahter than create multiple empty array for expense and income 
     //We can create store that in object that is called data
+    //This is good way of data structure and good way to keep it one place
+    
     var data = {
         allItems: {
             exp: [],
@@ -30,6 +32,23 @@ var budegtController = (function(){
         }
     }
 
+    //Here we create public methode. right here in budget controller 
+    //that's gone allow to other module to add new iteam into our data structure 
+
+    return {
+        addItem: function(type, des, val){
+            var newItem;
+
+            //Here we check that user selecting which iteam income or expense
+            if(type = 'exp') {
+                //if user select the exp the it will create new object in Expense constructor
+                newItem = new Expense (ID, des, val)
+            } else if (type = 'inc') {
+                //if user select the inc the it will create new object in Income constructor
+                newItem = new Income (ID, des, val)
+            }
+        }
+    }
 })();
 
 // UI CONTROLLER
