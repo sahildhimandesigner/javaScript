@@ -21,11 +21,12 @@ var UIController = (function() {
 
     //So here we have created on object so that in future if the ui classes name change then it will not create a problem.
     //We just need to change the value of the object key rather than updating all querySelctor.
-    
+
     const DOMString = {
         inputType: '.add__type',
         inputDescription: '.add__description',
         inputValue: '.add__value',
+        inputBtn: '.add__btn',
     }
 
     return {
@@ -45,7 +46,13 @@ var UIController = (function() {
                 //var description = document.querySelector('.add__description').value,
                 //var value = document.querySelector('.add__value').value,
 
+                //----------------------------------------------------------------/
             }
+        },
+
+        //Created the one more methode to access in bth
+        getDOMStrings: function() {
+            return DOMString;
         }
     }
 
@@ -55,6 +62,9 @@ var UIController = (function() {
 //GLOBAL APP CONTROLLER
 
 var controller = (function(budgetCtrl, UICtrl) {
+
+    //Here we recieve the methode from other controler in var.
+    var DOM = UICtrl.getDOMStrings();
 
     //For reusability we have created the function.
     var ctrlAddItem = function() {
@@ -74,7 +84,8 @@ var controller = (function(budgetCtrl, UICtrl) {
     }
 
     //Bind the click methode with add button and call a function
-    document.querySelector('.add__btn').addEventListener('click', ctrlAddItem)
+    //Here we pass the class name form object which we have created in other controller
+    document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem)
 
     //Created the event on press ENTER key
     document.addEventListener('keypress', function(event) {
