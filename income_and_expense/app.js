@@ -37,7 +37,10 @@ var budegtController = (function(){
 
     return {
         addItem: function(type, des, val){
-            var newItem;
+            var newItem, ID;
+
+            //id initially should be zero.
+            ID = 0;
 
             //Here we check that user selecting which iteam income or expense
             if(type = 'exp') {
@@ -47,6 +50,10 @@ var budegtController = (function(){
                 //if user select the inc the it will create new object in Income constructor
                 newItem = new Income (ID, des, val)
             }
+
+            //Here we store our iteam in data
+            //We are pushing our data into DATA object bassed on type here
+            data.allItems[type].push(newItem);
         }
     }
 })();
