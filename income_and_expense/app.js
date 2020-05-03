@@ -63,8 +63,24 @@ var UIController = (function() {
 
 var controller = (function(budgetCtrl, UICtrl) {
 
-    //Here we recieve the methode from other controler in var.
-    var DOM = UICtrl.getDOMStrings();
+    //We have created the init function we plache all the event listner under this function
+    var setupEventListeners = function() {
+        //Here we recieve the methode from other controler in var.
+        var DOM = UICtrl.getDOMStrings();    
+        //--------------------------------------------------//
+
+        //Bind the click methode with add button and call a function
+        //Here we pass the class name form object which we have created in other controller
+        document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem)
+
+        //Created the event on press ENTER key
+        document.addEventListener('keypress', function(event) {
+            if(event.keyCode === 13 || event.which === 13) {
+                ctrlAddItem();
+            }
+        })        
+        //--------------------------------------------------//
+    }    
 
     //For reusability we have created the function.
     var ctrlAddItem = function() {
@@ -83,15 +99,15 @@ var controller = (function(budgetCtrl, UICtrl) {
 
     }
 
-    //Bind the click methode with add button and call a function
-    //Here we pass the class name form object which we have created in other controller
-    document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem)
-
-    //Created the event on press ENTER key
-    document.addEventListener('keypress', function(event) {
-        if(event.keyCode === 13 || event.which === 13) {
-            ctrlAddItem();
+    //Access the setupEventListerners we return as object.
+    //So that we can access it publiclly.
+    return {
+        init: function() {
+            return setupEventListeners();
         }
-    })
+    };
 
 })(budegtController, UIController);
+
+//HERE WE CALL THE INIT FUNCTION
+controller.init();
