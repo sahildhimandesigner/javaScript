@@ -19,6 +19,15 @@ var UIController = (function() {
 
     //SOME CODE
 
+    //So here we have created on object so that in future if the ui classes name change then it will not create a problem.
+    //We just need to change the value of the object key rather than updating all querySelctor.
+    
+    const DOMString = {
+        inputType: '.add__type',
+        inputDescription: '.add__description',
+        inputValue: '.add__value',
+    }
+
     return {
         //Here we have created the methode and return a object becuse we can access it publically.
         getInput: function() {
@@ -26,9 +35,9 @@ var UIController = (function() {
 
                 //So rather than defining multple var we create a object.
                 //this methode return all these three input which have this controller.
-                type: document.querySelector('.add__type').value,
-                description: document.querySelector('.add__description').value,
-                value: document.querySelector('.add__value').value,
+                type: document.querySelector(DOMString.inputType).value,
+                description: document.querySelector(DOMString.inputDescription).value,
+                value: document.querySelector(DOMString.inputValue).value,
 
                 //OTHER WAY IS
 
