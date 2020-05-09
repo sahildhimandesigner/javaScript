@@ -38,6 +38,7 @@ var budegtController = (function(){
     return {
         addItem: function(type, des, val){
             var newItem, ID;
+
             //Create a new id
             //So if there is no idea that it should be zero. and zero -1 is -1
             //so there is not -1 in array and this id is not existe            
@@ -46,6 +47,13 @@ var budegtController = (function(){
                 ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
             } else {
                 ID = 0;
+            }
+
+            // Create new item based on 'inc' or 'exp' type
+            if (type === 'exp') {
+                newItem = new Expense(ID, des, val);
+            } else if (type === 'inc') {
+                newItem = new Income(ID, des, val);
             }
 
             //Here we store our iteam in data
@@ -80,13 +88,13 @@ var UIController = (function() {
     //So here we have created on object so that in future if the ui classes name change then it will not create a problem.
     //We just need to change the value of the object key rather than updating all querySelctor.
 
-    const DOMStrings = {
+    const DOMstrings = {
         inputType: '.add__type',
         inputDescription: '.add__description',
         inputValue: '.add__value',
         inputBtn: '.add__btn',
         incomeContainer: '.income__list',
-        expenseContainer: '.expense__list'
+        expensesContainer: '.expenses__list',
     }
 
     return {
@@ -96,9 +104,9 @@ var UIController = (function() {
 
                 //So rather than defining multple var we create a object.
                 //this methode return all these three input which have this controller.
-                type: document.querySelector(DOMStrings.inputType).value,
-                description: document.querySelector(DOMStrings.inputDescription).value,
-                value: document.querySelector(DOMStrings.inputValue).value,
+                type: document.querySelector(DOMstrings.inputType).value,
+                description: document.querySelector(DOMstrings.inputDescription).value,
+                value: document.querySelector(DOMstrings.inputValue).value,
 
                 //OTHER WAY IS
 
@@ -111,41 +119,31 @@ var UIController = (function() {
         },
 
         addListItem: function(obj, type) {
-            var html, newHtml, element; 
-
-            if(type === 'inc') {
-                //Create HTML string with  placeholder text
-                element = DOMStrings.incomeContainer;
-                html = `<div class="item clearfix" id="inc-%id%">
-                            <div class="item__description">%description%</div>
-                            <div class="right clearfix"><div class="item__value">%value%</div>
-                            <div class="item__delete"><button class="item__delete--btn">
-                            <i class="ion-ios-close-outline"></i></button></div></div>
-                        </div>`
+            var html, newHtml, element;
+            // Create HTML string with placeholder text
+            
+            if (type === 'inc') {
+                element = DOMstrings.incomeContainer;
+                
+                html = '<div class="item clearfix" id="inc-%id%"> <div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+            } else if (type === 'exp') {
+                element = DOMstrings.expensesContainer;
+                
+                html = '<div class="item clearfix" id="exp-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
             }
-            else if (type === 'exp'){
-                element = DOMStrings.expenseContainer;
-                html = `<div class="item clearfix" id="exp-%id%">
-                            <div class="item__description">%description%</div>
-                            <div class="right clearfix"><div class="item__value">%value%</div>
-                            <div class="item__percentage"></div>
-                            <div class="item__delete"><button class="item__delete--btn">
-                            <i class="ion-ios-close-outline"></i></button></div></div>
-                        </div>`
-                //Replace the placeholder text with some actual data    
-            }
-            //insert the HTML into the DOM
-
-            newHtml =  html.replace(`%id%`, obj.id);
-            newHtml =  newHtml.replace(`%description%`, obj.description);
-            newHtml =  newHtml.replace(`%value%`, obj.value);
-
+            
+            // Replace the placeholder text with some actual data
+            newHtml = html.replace('%id%', obj.id);
+            newHtml = newHtml.replace('%description%', obj.description);
+            newHtml = newHtml.replace('%value%', obj.value);
+            
+            // Insert the HTML into the DOM
             document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
         },
 
         //Created the one more methode to access in bth
         getDOMStrings: function() {
-            return DOMStrings;
+            return DOMstrings;
         }
     }
 
@@ -183,10 +181,10 @@ var controller = (function(budgetCtrl, UICtrl) {
         input = UICtrl.getInput();
 
         // 2. Add the item to the budget controller
-        newItem = budgetCtrl.addItem(input.type, input.description, input.value)         
+        newItem = budegtController.addItem(input.type, input.description, input.value)
 
         // 3. Add the item to the UI 
-        UICtrl.addListItem(newItem, input.type)        
+        UICtrl.addListItem(newItem, input.type);
 
         // 4. Calculate the budget
 
