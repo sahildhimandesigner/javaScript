@@ -38,29 +38,19 @@ var budegtController = (function(){
     return {
         addItem: function(type, des, val){
             var newItem, ID;
-
             //Create a new id
             //So if there is no idea that it should be zero. and zero -1 is -1
-            //so there is not -1 in array and this id is not existe
-            if(data.allItems[type].length > 0) {
-                ID = data.allItems[type][data.allItems[type].length -1].id + 1;
-            } 
-            else {
-                ID = 0;
-            }
+            //so there is not -1 in array and this id is not existe            
 
-            //Here we check that user selecting which iteam income or expense
-            if(type = 'exp') {
-                //if user select the exp the it will create new object in Expense constructor
-                newItem = new Expense (ID, des, val)
-            } else if (type = 'inc') {
-                //if user select the inc the it will create new object in Income constructor
-                newItem = new Income (ID, des, val)
+            if (data.allItems[type].length > 0) {
+                ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+            } else {
+                ID = 0;
             }
 
             //Here we store our iteam in data
             //We are pushing our data into DATA object bassed on type here
-            data.allItems[type].push(newItem);
+            data.allItems[type].push(newItem);            
 
             //now we are going to return newItem so that other controller can use it.
             //Return the new element
@@ -90,11 +80,13 @@ var UIController = (function() {
     //So here we have created on object so that in future if the ui classes name change then it will not create a problem.
     //We just need to change the value of the object key rather than updating all querySelctor.
 
-    const DOMString = {
+    const DOMStrings = {
         inputType: '.add__type',
         inputDescription: '.add__description',
         inputValue: '.add__value',
         inputBtn: '.add__btn',
+        incomeContainer: '.income__list',
+        expenseContainer: '.expense__list'
     }
 
     return {
@@ -104,9 +96,9 @@ var UIController = (function() {
 
                 //So rather than defining multple var we create a object.
                 //this methode return all these three input which have this controller.
-                type: document.querySelector(DOMString.inputType).value,
-                description: document.querySelector(DOMString.inputDescription).value,
-                value: document.querySelector(DOMString.inputValue).value,
+                type: document.querySelector(DOMStrings.inputType).value,
+                description: document.querySelector(DOMStrings.inputDescription).value,
+                value: document.querySelector(DOMStrings.inputValue).value,
 
                 //OTHER WAY IS
 
@@ -118,9 +110,42 @@ var UIController = (function() {
             }
         },
 
+        addListItem: function(obj, type) {
+            var html, newHtml, element; 
+
+            if(type === 'inc') {
+                //Create HTML string with  placeholder text
+                element = DOMStrings.incomeContainer;
+                html = `<div class="item clearfix" id="inc-%id%">
+                            <div class="item__description">%description%</div>
+                            <div class="right clearfix"><div class="item__value">%value%</div>
+                            <div class="item__delete"><button class="item__delete--btn">
+                            <i class="ion-ios-close-outline"></i></button></div></div>
+                        </div>`
+            }
+            else if (type === 'exp'){
+                element = DOMStrings.expenseContainer;
+                html = `<div class="item clearfix" id="exp-%id%">
+                            <div class="item__description">%description%</div>
+                            <div class="right clearfix"><div class="item__value">%value%</div>
+                            <div class="item__percentage"></div>
+                            <div class="item__delete"><button class="item__delete--btn">
+                            <i class="ion-ios-close-outline"></i></button></div></div>
+                        </div>`
+                //Replace the placeholder text with some actual data    
+            }
+            //insert the HTML into the DOM
+
+            newHtml =  html.replace(`%id%`, obj.id);
+            newHtml =  newHtml.replace(`%description%`, obj.description);
+            newHtml =  newHtml.replace(`%value%`, obj.value);
+
+            document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
+        },
+
         //Created the one more methode to access in bth
         getDOMStrings: function() {
-            return DOMString;
+            return DOMStrings;
         }
     }
 
@@ -158,9 +183,10 @@ var controller = (function(budgetCtrl, UICtrl) {
         input = UICtrl.getInput();
 
         // 2. Add the item to the budget controller
-        newItem = budegtController.addItem(input.type, input.description, input.value)
+        newItem = budgetCtrl.addItem(input.type, input.description, input.value)         
 
         // 3. Add the item to the UI 
+        UICtrl.addListItem(newItem, input.type)        
 
         // 4. Calculate the budget
 
