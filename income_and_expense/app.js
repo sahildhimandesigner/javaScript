@@ -65,6 +65,22 @@ var budegtController = (function(){
             return newItem;
         },
 
+        deleteItem: function(type, id) {
+            var ids, index;
+
+            ids = data.allItems[type].map(function(current){
+                return current.id;
+            })
+
+            index = ids.indexOf(id);
+            
+            if(index !== -1) {
+                data.allItems[type].splice(index, 1);
+                //index - index number of array
+                //1 - second parameter, how many item, we want to delete
+            }
+        },
+
         testing: function(){
             console.log(data)
         }
@@ -95,6 +111,7 @@ var UIController = (function() {
         inputBtn: '.add__btn',
         incomeContainer: '.income__list',
         expensesContainer: '.expenses__list',
+        container: '.container'
     }
 
     return {
@@ -157,7 +174,7 @@ var controller = (function(budgetCtrl, UICtrl) {
     //We have created the init function we plache all the event listner under this function
     var setupEventListeners = function() {
         //Here we recieve the methode from other controler in var.
-        var DOM = UICtrl.getDOMStrings();    
+        var DOM = UICtrl.getDOMStrings();
         //--------------------------------------------------//
 
         //Bind the click methode with add button and call a function
@@ -169,8 +186,10 @@ var controller = (function(budgetCtrl, UICtrl) {
             if(event.keyCode === 13 || event.which === 13) {
                 ctrlAddItem();
             }
-        })        
+        })
         //--------------------------------------------------//
+
+        document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
     }    
 
     //For reusability we have created the function.
@@ -190,6 +209,27 @@ var controller = (function(budgetCtrl, UICtrl) {
 
         // 5. Display the budget on the UI
 
+    }
+
+    var ctrlDeleteItem = function(event) {
+        var itemId, splitId;
+        itemId = event.target.parentNode.parentNode.parentNode.parentNode.id
+        
+
+        //inc - 1
+        if(itemId) {
+            splitId = itemId.split('-')
+            type = splitId[0];
+            //parseInt is used to convert the string to number
+            ID = parseInt(splitId[1]);
+        }
+
+        // 1. Delete the item from data structure
+        budgetCtrl.deleteItem(type, ID);
+
+        // 2. Delete the item from the UI
+
+        // 3. Update and show new budget
     }
 
     //Access the setupEventListerners we return as object.

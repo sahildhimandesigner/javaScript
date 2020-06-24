@@ -22,6 +22,7 @@
    
    // pass the two parameter to call this function and use in GETALLUSERDATA function   
    const loggedInUserDetails = (snapshot, flag, getUserId) => {
+    
     if(snapshot.exists()){
       document.getElementById("data_loading").style.display = "none";
       var content = '';
