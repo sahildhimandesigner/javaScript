@@ -14,13 +14,21 @@ var budegtController = (function(){
         this.id = id;
         this.description = description;
         this.value = value;
-    }
+    };
 
     //To store the mutliple expense and income value we use array
     //Rahter than create multiple empty array for expense and income 
     //We can create store that in object that is called data
     //This is good way of data structure and good way to keep it one place
     
+    var calculateTotal = function(type) {
+        var sum = 0;
+        data.allItems[type].forEach(function(cur){
+            sum += cur.value;
+        })
+        data.totals[type] =  sum;
+    };
+
     var data = {
         allItems: {
             exp: [],
@@ -29,8 +37,10 @@ var budegtController = (function(){
         totals: {
             exp: 0,
             inc: 0
-        }
-    }
+        },
+        budget: 0,
+        percentage: -1,
+    };
 
     //Here we create public methode. right here in budget controller 
     //that's gone allow to other module to add new iteam into our data structure 
@@ -81,9 +91,37 @@ var budegtController = (function(){
             }
         },
 
+        calculateBudget: function(){
+
+            // Calculate total income and expenses
+            calculateTotal('exp');
+            calculateTotal('inc');
+
+            // Calculate the budget: income - expenses
+            data.budget = data.totals.inc - data.totals.exp;
+
+            //this condition if we have income then it will calculate the percentage otherwise it is not existance
+            if (data.totals.inc > 0) {
+                data.percentage = Math.round((data.totals.exp / data.totals.inc) * 100);
+            } else {
+                data.percentage = -1;
+            } 
+            // Calculate the percentage of income that we spent
+            
+        },
+
+        getBudget: function() {
+            return {
+                budget: data.budget,
+                totalInc: data.totals.inc,
+                totalExp: data.totals.exp,
+                percentage: data.percentage,
+            }
+        },
+
         testing: function(){
             console.log(data)
-        }
+        },
     }
 })();
 
@@ -219,6 +257,8 @@ var controller = (function(budgetCtrl, UICtrl) {
 
         //2. Return the budget
         var budget = budgetCtrl.getBudget();
+
+        console.log(budget, 'budget')
 
         //3. Display the budget on the UI
         UICtrl.displayBudget(budget)
