@@ -149,7 +149,11 @@ var UIController = (function() {
         inputBtn: '.add__btn',
         incomeContainer: '.income__list',
         expensesContainer: '.expenses__list',
-        container: '.container'
+        container: '.container',
+        budgetLabel: '.budget__value',
+        incomeLabel: '.budget__income--value',
+        expense_label: '.budget__expenses--value',
+        percentage_lable: '.budget__expenses--percentage'
     }
 
     return {
@@ -217,6 +221,20 @@ var UIController = (function() {
            fieldsArr[0].focus();
         },
 
+        displayBudget: function(obj){
+            document.querySelector(DOMstrings.budgetLabel).textContent = obj.budget;
+            document.querySelector(DOMstrings.incomeLabel).textContent = obj.totalInc;
+            document.querySelector(DOMstrings.expense_label).textContent = obj.totalExp;
+            
+
+            if(obj.percentage > 0) {
+                document.querySelector(DOMstrings.percentage_lable).textContent = obj.percentage +++ '%';
+            }
+            else {
+                document.querySelector(DOMstrings.percentage_lable).textContent = '---';
+            }
+        },
+
         //Created the one more methode to access in bth
         getDOMStrings: function() {
             return DOMstrings;
@@ -257,8 +275,6 @@ var controller = (function(budgetCtrl, UICtrl) {
 
         //2. Return the budget
         var budget = budgetCtrl.getBudget();
-
-        console.log(budget, 'budget')
 
         //3. Display the budget on the UI
         UICtrl.displayBudget(budget)
